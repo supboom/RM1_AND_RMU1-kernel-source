@@ -1,0 +1,207 @@
+#include<stdio.h>
+#include<process.h>
+#include<conio.h>
+   struct node
+	   {int info;
+		struct node *next;
+	   };
+void insertatfront(struct node **ptr,int elt)
+		{ struct node *temp;
+		  temp=(struct node*)malloc(sizeof(struct node));
+		  if(temp==NULL)
+			 {
+			  return 0;
+			 }
+		  else{temp->info=elt;
+			   temp->next=ptr;
+			   *ptr=temp;
+			  }
+		 }
+
+void insertatlast(struct node **ptr,int elt)
+		{
+		 struct node *temp,*move;
+		 temp=(struct node*)malloc(sizeof(struct node));
+			 if(temp==NULL)
+				 {
+				   return 0;
+				 }
+			 else
+				 {
+				  temp->info=elt;
+				  move=*ptr;
+				 while(move->next!=NULL)
+					 move=move->next;
+
+				  move->next=temp;
+				  temp->next=NULL;
+				 }
+		}
+
+void insertafter(struct node **ptr,int elt,int sea)
+	   {
+		struct node *temp,*move;
+		temp=(struct node*)malloc(sizeof(struct node));
+			 if(temp==NULL)
+			   {
+				 return;
+			   }
+			 else
+				{
+				 temp->info=elt;
+				 move=*ptr;
+				  while(move->info!=sea)
+				 move=move->next;
+
+				 temp->next=move->next;
+				 move->next=temp;
+				}
+		 }
+
+void insertbefore(struct node **ptr,int elt,int sea)
+	   {
+		struct node *temp,*move,*back=NULL;
+		temp=(struct node*)malloc(sizeof(struct node));
+		 if(temp==NULL)
+		   {
+			return;
+		   }
+		 else
+		   {
+			 temp->info=elt;
+			 move=*ptr;
+			  while(move->info!=sea)
+				{
+				 back=move->next;
+				 move=move->next;
+				}
+
+			 temp->next=move;
+			 back->next=temp;
+		   }
+		}
+
+int deletefront(struct node *ptr)
+	  {
+	   struct node *move;
+		int item;
+		 move=ptr;
+		 item=move->info;
+	ptr->next=move->next;
+		 free(move);
+	   return (item);
+	  }
+
+int deletelast(struct node **ptr)
+	  {
+	   struct node *move,*back;
+		int item;
+		move=*ptr;
+		back=NULL;
+   while(move->next!=NULL)
+		{
+		 back->next=move;
+		 move=move->next;
+		}
+		 back->next=NULL;
+		 item=move->info;
+		   free(move);
+	  return (item);
+	  }
+
+void display(struct node **ptr)
+	  {
+		struct node *move;
+		move=*ptr;
+		if(move==NULL)
+		 printf("LIST EMPTY\n");
+		else
+		 while(move!=NULL)
+			{
+			 printf("%d\n",move->info);
+				move=move->next;
+			}
+		getch();
+	  }
+
+void deletepar(struct node **ptr,int elt)
+	  {
+	   struct node *move,*back;
+		move=*ptr;
+		back=NULL;
+		 while(move->info!=elt)
+		   {
+			 back->next=move->next;
+			 move=move->next;
+		   }
+		  back->next=move->next;
+		   free(move);
+	  }
+
+
+void main()
+	{
+		struct node *ptr=NULL;
+		int i,elt,ch,sea,del;
+		 l1:clrscr();
+			printf("Enter your choice\n");
+			printf("1. Insert at front\n");
+			printf("2. Insert at last\n");
+			printf("3. Insert after a particular element\n");
+			printf("4. Insert before a particular element\n");
+			printf("5. Delete from Front\n");
+			printf("6. Delete from Last\n");
+			printf("7. Display\n");
+			printf("8. Delete from a particular location\n");
+			printf("9. Exit\n");
+		scanf("%d",&ch);
+			switch(ch)
+			{
+				case 1:
+			printf("Enter the element to insert at front\n");
+			scanf("%d",&elt);
+				insertatfront(&ptr,elt);
+				   break;
+				case 2:
+			printf("Enter the element to insert at back\n");
+			scanf("%d",&elt);
+			insertatlast(&ptr,elt);
+				   break;
+				case 3:
+			printf("Enter the insert at a location\n");
+			scanf("%d",&elt);
+			printf("Enter the element the after you want to insert");
+			scanf("%d",&sea);
+				insertafter(&ptr,elt,sea);
+				   break;
+				case 4:
+			printf("Enter the element you want to insert before\n");
+			scanf("%d",&elt);
+			printf("Enter the element the after you want to insert\n");
+			scanf("%d",&sea);
+			insertbefore(&ptr,elt,sea);
+					break;
+				case 5:
+			del=deletefront(ptr);
+			printf("%d Element has been delteted",del);
+					break;
+				case 6:
+			del=deletelast(&ptr);
+				printf("%d Element has been delteted",del);
+					break;
+				case 7:
+				display(&ptr);
+				break;
+				case 8:
+				printf("Enter the element you want to delete");
+				scanf("%d",&elt);
+				deletepar(&ptr,elt);
+				break;
+				case 9: exit(0);
+				break;
+				default: printf("wrong value Entered ");
+				break;
+		}
+   goto l1;
+getch();
+}
