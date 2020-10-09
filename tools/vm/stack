@@ -1,0 +1,88 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+#define max 20
+struct stack
+{
+
+   int arr[max];
+   int top;
+ };
+ void push(struct stack * ptr,int item);
+ void pop();
+ void display(struct stack * ptr);
+
+ void main()
+ {
+    struct stack st;
+    int elt,choice,i;
+    char ch;
+    st.top=-1;
+    clrscr();
+   for(i=0;1;)
+  {
+    printf("\n MENU");
+    printf("\n 1.push an element");
+    printf("\n 2.pop an elememt");
+    printf("\n 3.display");
+    printf("\n 4.exit");
+    printf("\nenter your choice\n");
+    scanf("%d",&choice);
+    switch(choice)
+     {
+      case 1:printf("enter element\n");
+      scanf("%d",&elt);
+      push(&st,elt);
+	      break;
+      case 2:pop(&st);
+	break;
+      case 3:display(&st);
+	break;
+      case 4:exit(0);
+     }
+     }
+ getch();
+ }
+
+     void push(struct stack *ptr,int item)
+     {
+       if(ptr->top==max-1)
+       {
+	 printf("\nSTACK IS FULL");
+	 getch();
+	 return;
+       }
+	else
+	{
+	   ptr->top++;
+	   ptr->arr[ptr->top]=item;
+	}
+      }
+      void pop(struct stack *ptr)
+      {
+	int item;
+	if(ptr->top==-1)
+       {
+	 printf("stack is empty");
+	 getch();
+	 return;
+       }
+	else
+       {
+	 item=ptr->arr[ptr->top];
+	 ptr->top--;
+	 printf("popped element=%d",item);
+       }
+      }
+	void display(struct stack *ptr)
+	{
+	  int i;
+	  printf("\n elements of stack are:\n");
+	  if(ptr->top==-1)
+	  printf("Stack is empty\n");
+	   else
+		  for(i=ptr->top;i>=0;i--)
+	  {
+	   printf("%d ",ptr->arr[i]);
+	  }
+	}
