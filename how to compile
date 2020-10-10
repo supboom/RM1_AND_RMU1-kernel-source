@@ -1,5 +1,5 @@
 how to compile:
-1.17065=RM1;18611=U1；	
+1.17065=RM1;18611=U1；	//RM1=realme1 and U1=Realme U1
 2.define to use like this,17065=RM1 as the same way to define (as OPPO_17065 )
 "is_project(OPPO_18611)
 #elif CONFIG_OPPO_FINGERPRINT_PROJCT == 18611
