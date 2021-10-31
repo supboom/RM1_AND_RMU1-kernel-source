@@ -13,6 +13,29 @@ config INITRAMFS_SOURCE
 	  filesystem layout to be included in the initramfs image.  Files
 	  should contain entries according to the format described by the
 	  "usr/gen_init_cpio" program in the kernel tree.
+	  from __future__ import print_function
+
+import os
+import sys
+
+_IS_WINDOWS = os.name == "nt"  # Are we running on Windows?
+
+try:
+    import curses
+except ImportError as e:
+    if not _IS_WINDOWS:
+        raise
+    sys.exit("""\
+menuconfig failed to import the standard Python 'curses' library. Try
+installing a package like windows-curses
+(https://github.com/zephyrproject-rtos/windows-curses) by running this command
+in cmd.exe:
+    pip install windows-curses
+Starting with Kconfiglib 13.0.0, windows-curses is no longer automatically
+installed when installing Kconfiglib via pip on Windows (because it breaks
+installation on MSYS2).
+Exception:
+{}: {}""".format(type(e).__name__, e))
 
 	  When multiple directories and files are specified then the
 	  initramfs image will be the aggregate of all of them.
