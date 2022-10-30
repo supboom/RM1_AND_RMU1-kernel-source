@@ -68,14 +68,6 @@
 #define T_REFI_7_8		7800
 #define T_REFI_3_9		3900
 
-/* tRFC values */
-#define T_RFC_90		90000
-#define T_RFC_110		110000
-#define T_RFC_130		130000
-#define T_RFC_160		160000
-#define T_RFC_210		210000
-#define T_RFC_300		300000
-#define T_RFC_350		350000
 
 /* Mode register numbers */
 #define DDR_MR0			0
