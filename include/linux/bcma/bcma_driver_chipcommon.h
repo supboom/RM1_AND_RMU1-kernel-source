@@ -16,21 +16,7 @@
 #define  BCMA_CC_ID_NRCORES_SHIFT	24
 #define  BCMA_CC_ID_TYPE		0xF0000000
 #define  BCMA_CC_ID_TYPE_SHIFT		28
-#define BCMA_CC_CAP			0x0004		/* Capabilities */
-#define  BCMA_CC_CAP_NRUART		0x00000003	/* # of UARTs */
-#define  BCMA_CC_CAP_MIPSEB		0x00000004	/* MIPS in BigEndian Mode */
-#define  BCMA_CC_CAP_UARTCLK		0x00000018	/* UART clock select */
-#define   BCMA_CC_CAP_UARTCLK_INT	0x00000008	/* UARTs are driven by internal divided clock */
-#define  BCMA_CC_CAP_UARTGPIO		0x00000020	/* UARTs on GPIO 15-12 */
-#define  BCMA_CC_CAP_EXTBUS		0x000000C0	/* External buses present */
-#define  BCMA_CC_CAP_FLASHT		0x00000700	/* Flash Type */
-#define   BCMA_CC_FLASHT_NONE		0x00000000	/* No flash */
-#define   BCMA_CC_FLASHT_STSER		0x00000100	/* ST serial flash */
-#define   BCMA_CC_FLASHT_ATSER		0x00000200	/* Atmel serial flash */
-#define   BCMA_CC_FLASHT_NAND		0x00000300	/* NAND flash */
-#define	  BCMA_CC_FLASHT_PARA		0x00000700	/* Parallel flash */
-#define  BCMA_CC_CAP_PLLT		0x00038000	/* PLL Type */
-#define   BCMA_PLLTYPE_NONE		0x00000000
+
 #define   BCMA_PLLTYPE_1		0x00010000	/* 48Mhz base, 3 dividers */
 #define   BCMA_PLLTYPE_2		0x00020000	/* 48Mhz, 4 dividers */
 #define   BCMA_PLLTYPE_3		0x00030000	/* 25Mhz, 2 dividers */
